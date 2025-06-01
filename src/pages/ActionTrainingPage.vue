@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex flex-col overflow-hidden"
+      class="h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex flex-col overflow-hidden"
   >
     <!-- Header -->
     <div class="bg-white/80 backdrop-blur-md shadow-sm flex-shrink-0">
@@ -8,20 +8,20 @@
         <!-- Left Side - Navigation -->
         <div class="flex items-center gap-4 flex-1">
           <button
-            @click="handleCancel"
-            class="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 font-medium transition-colors rounded-lg hover:bg-gray-100"
+              @click="handleCancel"
+              class="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 font-medium transition-colors rounded-lg hover:bg-gray-100"
           >
             <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 19l-7-7 7-7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
               ></path>
             </svg>
             Back to Profile
@@ -35,15 +35,15 @@
         <!-- Center - Training Progress (only during training) -->
         <div v-if="trainingStatus === 'training'" class="flex-1 max-w-md mx-8">
           <div
-            class="bg-white/90 backdrop-blur-md rounded-xl border border-gray-200 p-3 shadow-sm"
+              class="bg-white/90 backdrop-blur-md rounded-xl border border-gray-200 p-3 shadow-sm"
           >
             <div class="flex items-center justify-between mb-2">
               <h3 class="text-sm font-semibold text-gray-800">
                 Training Progress
               </h3>
               <button
-                @click="stopTraining"
-                class="px-3 py-1 bg-red-500 text-white font-medium rounded text-xs hover:bg-red-600 transition-all duration-200"
+                  @click="stopTraining"
+                  class="px-3 py-1 bg-red-500 text-white font-medium rounded text-xs hover:bg-red-600 transition-all duration-200"
               >
                 Stop
               </button>
@@ -54,8 +54,8 @@
             </div>
             <div class="w-full bg-gray-200 rounded-full h-1.5 mb-2">
               <div
-                class="bg-blue-600 h-1.5 rounded-full transition-all duration-100"
-                :style="{ width: `${trainingProgress}%` }"
+                  class="bg-blue-600 h-1.5 rounded-full transition-all duration-100"
+                  :style="{ width: `${trainingProgress}%` }"
               ></div>
             </div>
             <!-- <div class="text-center">
@@ -75,13 +75,13 @@
             Profile: <span class="font-medium">{{ profileName }}</span>
           </div>
           <div
-            v-if="trainingStatus !== 'idle'"
-            class="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium"
-            :class="getStatusStyle(trainingStatus)"
+              v-if="trainingStatus !== 'idle'"
+              class="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium"
+              :class="getStatusStyle(trainingStatus)"
           >
             <div
-              v-if="trainingStatus === 'training'"
-              class="w-2 h-2 bg-current rounded-full animate-pulse"
+                v-if="trainingStatus === 'training'"
+                class="w-2 h-2 bg-current rounded-full animate-pulse"
             ></div>
             {{ getStatusText(trainingStatus) }}
           </div>
@@ -91,7 +91,7 @@
 
     <!-- Main Content -->
     <div
-      class="flex-1 flex flex-col items-center justify-center p-4 overflow-hidden"
+        class="flex-1 flex flex-col items-center justify-center p-4 overflow-hidden"
     >
       <!-- Training Instructions -->
       <div v-if="trainingStatus === 'idle'" class="text-center max-w-2xl">
@@ -111,7 +111,7 @@
             Training Instructions:
           </h3>
           <ul
-            class="text-blue-700 text-sm space-y-1 text-left max-w-md mx-auto"
+              class="text-blue-700 text-sm space-y-1 text-left max-w-md mx-auto"
           >
             <li>• Make sure your EEG device is properly connected</li>
             <li>• Focus on the page turning motion</li>
@@ -122,9 +122,9 @@
           </ul>
         </div>
         <button
-          @click="startTraining"
-          :disabled="isStarting"
-          class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            @click="startTraining"
+            :disabled="isStarting"
+            class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {{ isStarting ? "Starting..." : "Start Training" }}
         </button>
@@ -139,19 +139,19 @@
 
       <!-- FlipBook Component -->
       <div
-        v-if="trainingStatus === 'training'"
-        class="flex flex-col h-full w-full overflow-hidden"
+          v-if="trainingStatus === 'training'"
+          class="flex flex-col h-full w-full overflow-hidden"
       >
         <!-- FlipBook居中容器 - 全屏高度 -->
         <div
-          class="training-flipbook-wrapper"
-          style="flex: 1; min-height: 60vh"
+            class="training-flipbook-wrapper"
+            style="flex: 1; min-height: 60vh"
         >
           <FlipBook
-            :mode="getFlipMode()"
-            :autoTurnInterval="1000"
-            :showControls="false"
-            :customPages="trainingPages"
+              :mode="getFlipMode()"
+              :autoTurnInterval="1000"
+              :showControls="false"
+              :customPages="trainingPages"
           />
         </div>
       </div>
@@ -160,19 +160,19 @@
       <div v-if="trainingStatus === 'completed'" class="text-center max-w-sm">
         <div class="bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-lg">
           <div
-            class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
           >
             <svg
-              class="w-8 h-8 text-green-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+                class="w-8 h-8 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 13l4 4L19 7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
               ></path>
             </svg>
           </div>
@@ -191,8 +191,8 @@
               <div class="text-left">
                 <span class="text-gray-600">Signal Quality:</span>
                 <div
-                  class="font-medium"
-                  :class="getSignalQualityColor(trainingResults?.signalQuality)"
+                    class="font-medium"
+                    :class="getSignalQualityColor(trainingResults?.signalQuality)"
                 >
                   {{ trainingResults?.signalQuality || "Unknown" }}
                 </div>
@@ -220,16 +220,90 @@
 
           <div class="flex gap-3">
             <button
-              @click="rejectTraining"
-              class="flex-1 px-4 py-2 bg-gray-500 text-white font-medium rounded-lg hover:bg-gray-600 transition-all duration-200"
+                @click="rejectTraining"
+                class="flex-1 px-4 py-2 bg-gray-500 text-white font-medium rounded-lg hover:bg-gray-600 transition-all duration-200"
             >
               Reject
             </button>
             <button
-              @click="acceptTraining"
-              class="flex-1 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-all duration-200"
+                @click="acceptTraining"
+                class="flex-1 px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-all duration-200"
             >
               Accept
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Training Interrupted Results -->
+      <div v-if="trainingStatus === 'interrupted'" class="text-center max-w-sm">
+        <div class="bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-lg">
+          <div
+              class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <svg
+                class="w-8 h-8 text-orange-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+              <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+              ></path>
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold text-gray-800 mb-2">
+            Training Interrupted
+          </h2>
+          <p class="text-gray-600 mb-6 text-sm leading-relaxed">
+            Your {{ getActionDisplayName(action) }} training session was stopped
+            before completion. The collected data may not be sufficient for
+            optimal model training.
+          </p>
+
+          <!-- 中断训练的简化结果 -->
+          <div class="bg-gray-50 rounded-lg p-4 mb-6">
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div class="text-left">
+                <span class="text-gray-600">Status:</span>
+                <div class="font-medium text-orange-600">Interrupted</div>
+              </div>
+              <div class="text-left">
+                <span class="text-gray-600">Data Points:</span>
+                <div class="font-medium text-gray-800">
+                  {{ trainingResults?.dataPoints || 0 }}
+                </div>
+              </div>
+              <div class="text-left">
+                <span class="text-gray-600">Duration:</span>
+                <div class="font-medium text-gray-800">
+                  {{ Math.round(elapsedTime / 1000) }}s
+                </div>
+              </div>
+              <div class="text-left">
+                <span class="text-gray-600">Completion:</span>
+                <div class="font-medium text-gray-800">
+                  {{ Math.round((elapsedTime / TRAINING_DURATION) * 100) }}%
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <button
+                @click="rejectTraining"
+                class="flex-1 px-4 py-2 bg-gray-500 text-white font-medium rounded-lg hover:bg-gray-600 transition-all duration-200"
+            >
+              Discard
+            </button>
+            <button
+                @click="startTraining"
+                class="flex-1 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-200"
+            >
+              Retry
             </button>
           </div>
         </div>
@@ -239,9 +313,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { ElMessage } from "element-plus";
+import {ref, onMounted, onUnmounted, computed} from "vue";
+import {useRoute, useRouter} from "vue-router";
+import {ElMessage} from "element-plus";
 import FlipBook from "@/components/FlipBook.vue";
 import {
   startTrainingSession,
@@ -258,7 +332,7 @@ const profileName = route.params.profileName; // 使用profileName而不是profi
 const action = route.query.action || "left";
 
 // 训练状态
-const trainingStatus = ref("idle"); // idle, countdown, training, completed
+const trainingStatus = ref("idle"); // idle, countdown, training, completed, interrupted
 const isStarting = ref(false);
 const countdown = ref(3);
 const elapsedTime = ref(0);
@@ -302,6 +376,7 @@ const getStatusStyle = (status) => {
     countdown: "bg-yellow-100 text-yellow-800",
     training: "bg-blue-100 text-blue-800",
     completed: "bg-green-100 text-green-800",
+    interrupted: "bg-orange-100 text-orange-800",
   };
   return styles[status] || "bg-gray-100 text-gray-800";
 };
@@ -312,6 +387,7 @@ const getStatusText = (status) => {
     countdown: "Preparing...",
     training: "Recording",
     completed: "Complete",
+    interrupted: "Interrupted",
   };
   return texts[status] || "Unknown";
 };
@@ -331,48 +407,51 @@ const getSignalQualityColor = (quality) => {
 const trainingPages = [
   {
     content:
-      "Focus on the page turning motion. Let your mind concentrate on the visual movement of the pages as they flip from one side to another.",
+        "Focus on the page turning motion. Let your mind concentrate on the visual movement of the pages as they flip from one side to another.",
     pageNumber: 1,
   },
   {
     content:
-      "Continue focusing on the page turning pattern. Your brain activity is being recorded to learn this specific motion pattern.",
+        "Continue focusing on the page turning pattern. Your brain activity is being recorded to learn this specific motion pattern.",
     pageNumber: 2,
   },
   {
     content:
-      "Maintain your concentration on the flipping pages. The EEG device is capturing your neural responses to this visual stimulus.",
+        "Maintain your concentration on the flipping pages. The EEG device is capturing your neural responses to this visual stimulus.",
     pageNumber: 3,
   },
   {
     content:
-      "Keep watching the page movements. This training session helps the system learn your unique brain patterns for this action.",
+        "Keep watching the page movements. This training session helps the system learn your unique brain patterns for this action.",
     pageNumber: 4,
   },
   {
     content:
-      "Stay focused on the page transitions. Your mental attention to this motion is creating valuable training data.",
+        "Stay focused on the page transitions. Your mental attention to this motion is creating valuable training data.",
     pageNumber: 5,
   },
   {
     content:
-      "Continue observing the page flipping motion. The system is learning to recognize your brain signals for this specific action.",
+        "Continue observing the page flipping motion. The system is learning to recognize your brain signals for this specific action.",
     pageNumber: 6,
   },
   {
     content:
-      "Maintain focus on the visual page movement. This concentrated attention helps create accurate neural pattern recognition.",
+        "Maintain focus on the visual page movement. This concentrated attention helps create accurate neural pattern recognition.",
     pageNumber: 7,
   },
   {
     content:
-      "Keep concentrating on the page turning sequence. Your training session is helping build a personalized brain-computer interface.",
+        "Keep concentrating on the page turning sequence. Your training session is helping build a personalized brain-computer interface.",
     pageNumber: 8,
   },
 ];
 
 // 开始训练
 const startTraining = async () => {
+  // 重置训练状态
+  resetTrainingState();
+
   isStarting.value = true;
 
   try {
@@ -404,12 +483,28 @@ const startTraining = async () => {
   }
 };
 
+// 重置训练状态
+const resetTrainingState = () => {
+  // 清理所有定时器
+  clearInterval(countdownTimer);
+  clearInterval(progressTimer);
+  clearTimeout(trainingTimer);
+
+  // 重置状态
+  trainingStatus.value = "idle";
+  elapsedTime.value = 0;
+  countdown.value = 3;
+  currentSession.value = null;
+  trainingResults.value = null;
+  isStarting.value = false;
+};
+
 // 开始实际训练
 const beginTraining = () => {
   trainingStatus.value = "training";
   elapsedTime.value = 0;
   isStarting.value = false;
-  console.log("Training started:", { name: profileName, action });
+  console.log("Training started:", {name: profileName, action});
 
   // 进度更新定时器
   progressTimer = setInterval(() => {
@@ -430,8 +525,8 @@ const completeTraining = async () => {
   try {
     if (currentSession.value) {
       const response = await stopTrainingSession(
-        currentSession.value.sessionId,
-        "completed"
+          currentSession.value.sessionId,
+          "completed"
       );
 
       if (response.status === 1) {
@@ -471,8 +566,8 @@ const stopTraining = async () => {
   try {
     if (currentSession.value) {
       const response = await stopTrainingSession(
-        currentSession.value.sessionId,
-        "interrupted"
+          currentSession.value.sessionId,
+          "interrupted"
       );
 
       if (response.status === 1) {
@@ -490,7 +585,8 @@ const stopTraining = async () => {
     ElMessage.error("Failed to stop training session");
   }
 
-  trainingStatus.value = "completed";
+  // 设置为中断状态而不是完成状态
+  trainingStatus.value = "interrupted";
 };
 
 // 接受训练结果
@@ -498,8 +594,8 @@ const acceptTraining = async () => {
   try {
     if (currentSession.value && trainingResults.value) {
       const response = await acceptTrainingResults(
-        currentSession.value.sessionId,
-        trainingResults.value
+          currentSession.value.sessionId,
+          trainingResults.value
       );
 
       if (response.status === 1) {
@@ -523,8 +619,8 @@ const rejectTraining = async () => {
   try {
     if (currentSession.value) {
       const response = await rejectTrainingResults(
-        currentSession.value.sessionId,
-        "user_rejected"
+          currentSession.value.sessionId,
+          "user_rejected"
       );
 
       if (response.status === 1) {
@@ -554,7 +650,8 @@ const handleCancel = async () => {
   if (trainingStatus.value === "training" && currentSession.value) {
     try {
       await stopTrainingSession(currentSession.value.sessionId, "cancelled");
-      console.log("Training cancelled:", { name: profileName, action });
+      console.log("Training cancelled:", {name: profileName, action});
+      ElMessage.info("Training session cancelled");
     } catch (error) {
       console.error("Failed to cancel training:", error);
     }
@@ -579,7 +676,7 @@ onMounted(() => {
     return;
   }
 
-  console.log("Training page mounted:", { profileName, action });
+  console.log("Training page mounted:", {profileName, action});
 });
 </script>
 

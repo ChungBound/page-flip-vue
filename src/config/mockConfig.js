@@ -1,34 +1,36 @@
+import { reactive } from 'vue';
+
 // Mock Mode Configuration
 // This is the central configuration file to control mock mode
 
-export const mockConfig = {
+export const mockConfig = reactive({
   // 🎛️ Main switch: Controls whether to use Mock mode
   // true: Force use Mock mode (regardless of environment)
   // false: Force use real APIs
   // 'auto': Use Mock only in development environment (default behavior)
-  enabled: 'auto', // Options: true | false | 'auto'
-  
+  enabled: 'true', // Options: true | false | 'auto'
+
   // 🔧 Detailed control options
   options: {
     // API Mock control
     mockAPI: true,          // Whether to mock API calls
     mockWebSocket: true,    // Whether to mock WebSocket connection
-    
+
     // Mock data configuration
     mockDataInterval: 2000, // Mock data update interval (milliseconds)
     mockBatteryLevel: 75,   // Initial battery level
     mockBatteryOverview: 3, // Initial battery status (0-4)
-    
+
     // Debug options
     enableLogs: true,       // Whether to enable Mock-related logs
     showMockIndicator: true // Whether to show Mock mode indicator in UI
   }
-};
+});
 
 // 🎯 Get whether Mock mode should be used
 export function shouldUseMock() {
   const isDev = import.meta.env.MODE === 'development';
-  
+
   switch (mockConfig.enabled) {
     case true:
       return true; // Force enable
@@ -44,13 +46,13 @@ export function shouldUseMock() {
 export function getMockStatus() {
   const isUsing = shouldUseMock();
   const mode = mockConfig.enabled;
-  
+
   return {
     isUsing,
     mode,
-    description: isUsing 
-      ? `Mock mode enabled (${mode === true ? 'Forced' : mode === 'auto' ? 'Auto' : 'Manual'})`
-      : 'Real device mode'
+    description: isUsing
+        ? `Mock mode enabled (${mode === true ? 'Forced' : mode === 'auto' ? 'Auto' : 'Manual'})`
+        : 'Real device mode'
   };
 }
 
@@ -74,7 +76,7 @@ export function toggleMockMode(forceMode = null) {
         mockConfig.enabled = 'auto';
     }
   }
-  
+
   console.log('🎛️ Mock mode changed:', getMockStatus());
   return getMockStatus();
 } 
