@@ -132,7 +132,8 @@ const isDev = computed(() => import.meta.env.MODE === "development");
 
 // 基于mockState的本地状态计算
 const status = computed(() => {
-  const isDev = import.meta.env.MODE === "development";
+  // const isDev = import.meta.env.MODE === "development";
+  const isDev = true;
 
   let isUsing;
   switch (mockState.enabled) {
