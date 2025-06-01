@@ -29,7 +29,8 @@ export const mockConfig = reactive({
 
 // 🎯 Get whether Mock mode should be used
 export function shouldUseMock() {
-  const isDev = import.meta.env.MODE === 'development';
+  // const isDev = import.meta.env.MODE === 'development';
+  const isDev = true;
 
   switch (mockConfig.enabled) {
     case true:
