@@ -128,8 +128,8 @@ const buttonClasses = computed(() => ({
   "bg-green-500 text-white": mockState.enabled === false,
   "bg-gray-100 text-gray-700": mockState.enabled !== false,
 }));
-const isDev = computed(() => import.meta.env.MODE === "development");
-
+// const isDev = computed(() => import.meta.env.MODE === "development");
+const isDev = true;
 // 基于mockState的本地状态计算
 const status = computed(() => {
   // const isDev = import.meta.env.MODE === "development";
